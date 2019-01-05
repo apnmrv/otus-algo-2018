@@ -39,7 +39,7 @@ class PQueueTest <T> {
     }
 
     @Test
-    void canDequeueSomethingJustEnqueued() {
+    void canDequeueSomethingEnqueued() {
         for (int p = 1; p < 11; p++) {
             for (int i = 0; i < types.length; i++) {
                 T dequeued = pQueueToTest.dequeue();
