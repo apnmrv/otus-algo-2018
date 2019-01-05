@@ -1,6 +1,6 @@
 class DArray<T> {
 
-    private Object[] _arr;
+    protected Object[] _arr;
 
     protected DArray() {
     }
@@ -10,7 +10,7 @@ class DArray<T> {
         return (T)_arr[index];
     }
 
-    private void relocate(int newsize, int index) {
+    protected void relocate(int newsize, int index) {
         Object[] tmp = new Object[newsize];
 
         if (_arr != null)

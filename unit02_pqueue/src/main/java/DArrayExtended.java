@@ -19,6 +19,13 @@ public class DArrayExtended <T> extends DArray{
         return result;
     }
 
+    @Override
+    protected void add(int index, Object element) {
+        if (_arr == null || _arr.length <= index)
+            relocate(index+10, index);
+        _arr[index] = (Object)element;
+    }
+
     T first(){
         return first;
     }
