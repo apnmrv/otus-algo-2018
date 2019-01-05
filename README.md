@@ -4,6 +4,6 @@
 
 Группа 2018-12
 
-Andrey Ponomarev (Андрей Пономарев)
+Андрей Пономарев
 
 apnmrv@gmail.com
