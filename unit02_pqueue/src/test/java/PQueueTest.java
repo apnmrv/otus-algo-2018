@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PQueueTest <T> {
 
+    private static final int NUMBER_OF_PRIORITIES = 1_000;
+    private static final int NUMBER_OF_ELEMENTS_TO_ENQUEUE = 1_000;
+
     private PQueue pQueueToTest;
     private Map elementsToEnqueue;
     private String[] types = {"string", "integer", "array", "userObject"};
@@ -30,7 +33,7 @@ class PQueueTest <T> {
         elementsToEnqueue.put("array", new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9});
         elementsToEnqueue.put("userObject", new UserObject("string", 125));
 
-        for (int p = 1; p < 11; p++){
+        for (int p = 1; p < NUMBER_OF_PRIORITIES; p++){
 
             for (int i = 0; i < types.length; i++) {
                 pQueueToTest.enqueue(p, elementsToEnqueue.get(types[i]));
@@ -40,7 +43,7 @@ class PQueueTest <T> {
 
     @Test
     void canDequeueSomethingEnqueued() {
-        for (int p = 1; p < 11; p++) {
+        for (int p = 1; p < NUMBER_OF_PRIORITIES; p++) {
             for (int i = 0; i < types.length; i++) {
                 T dequeued = pQueueToTest.dequeue();
                 assertNotNull(dequeued);
@@ -50,7 +53,7 @@ class PQueueTest <T> {
 
     @Test
     void dequeuedIsOfTheTypeEnqueued() {
-        for (int p = 1; p < 11; p++) {
+        for (int p = 1; p < NUMBER_OF_PRIORITIES; p++) {
             for (int i = 0; i < types.length; i++) {
                 T dequeued = pQueueToTest.dequeue();
                 String type = elementsToEnqueue.get(types[i]).getClass().getName();
@@ -61,11 +64,31 @@ class PQueueTest <T> {
 
     @Test
     void dequeuedHasTheSameValueAsEnqueued() {
-        for (int p = 1; p < 11; p++) {
+        for (int p = 1; p < NUMBER_OF_PRIORITIES; p++) {
             for (int i = 0; i < types.length; i++) {
                 T dequeued = pQueueToTest.dequeue();
                 assertEquals(elementsToEnqueue.get(types[i]), dequeued);
             }
         }
+    }
+
+    @Test
+    void canDequeueAllElementsEnqueued()
+    {
+        PQueue pq = new PQueue();
+
+        for(int i = 0; i < NUMBER_OF_PRIORITIES; i++){
+            for(int j=0; j < NUMBER_OF_ELEMENTS_TO_ENQUEUE; j++){
+                pq.enqueue(i,j);
+            }
+        }
+
+        Integer intgr = pq.dequeue();
+
+        while (intgr != null) {
+            assertNotNull(intgr);
+            intgr = pq.dequeue();
+        }
+        assertNull(intgr);
     }
 }

@@ -1,10 +1,15 @@
 public class DArrayExtended <T> extends DArray{
 
-    private T first;
-    private T last;
-    private T current;
+    private int _blockSize = 10;
+    private int _elementsCount = 0;
 
     DArrayExtended(){
+        _arr = new Object[_blockSize];
+    }
+
+    DArrayExtended(int blockSize){
+        _blockSize = blockSize;
+        _arr = new Object[_blockSize];
     }
 
     @Override
@@ -19,55 +24,32 @@ public class DArrayExtended <T> extends DArray{
         return result;
     }
 
-    @Override
-    protected void add(int index, Object element) {
-        if (_arr == null || _arr.length <= index)
-            relocate(index+10, index);
-        _arr[index] = (Object)element;
-    }
+    protected void relocate() {
+        int currSize = size();
+        int newSize = currSize + _blockSize;
 
-    T first(){
-        return first;
-    }
+        Object[] tmp = new Object[newSize];
 
-    T last(){
-        return last;
-    }
-
-    T current(){
-
-        T curr = current;
-
-        current = next(current);
-
-        return curr;
-    }
-
-    private T next(T item){
-        T next = null;
-
-        for(int i = 0; i < size(); i++){
-            if(get(i) == item) {
-                next = (T) get(i+1);
-                break;
-            }
+        for(int i=0; i < currSize; i++) {
+            tmp[i] = _arr[i];
         }
 
-        return next;
+        _arr = tmp;
     }
 
-    void insert(int index, Object element) {
-
-        super.add(index, element);
-        shiftPointers();
+    public void add(Object element) {
+        if (false == canAddAnElement()){
+            relocate();
+        }
+        _arr[_elementsCount] = element;
+        ++_elementsCount;
     }
 
-    private void shiftPointers() {
-        if(null != get(0)) {
-            first = (T) get(0);
+    private boolean canAddAnElement() {
+        boolean answer = true;
+        if(_elementsCount == size()){
+            answer = false;
         }
-        if(null != get(size()-1)){
-            last = (T) get(size()-1);
-        }
+        return answer;
     }
 }

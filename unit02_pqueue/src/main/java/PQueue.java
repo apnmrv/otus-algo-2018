@@ -23,9 +23,7 @@ public class PQueue implements IPQueue {
     }
 
     public <T> T dequeue() {
-
         return current();
-
     }
 
     private <T> T current() {
