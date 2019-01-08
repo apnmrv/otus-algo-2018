@@ -1,32 +1,40 @@
 class OListExtended<T> extends OList {
 
-    protected ListItem _current;
+    private ListItem _current = null;
+    private ListItem _previous = null;
+    private ListItem _next = null;
 
     OListExtended(){
         super();
-        _current = head();
+        resetCurrent();
     }
 
     void addItem(Object item) {
         super.add(item);
-        _current = head();
     }
 
     public ListItem current() {
-        ListItem result = null;
-
-        if(_current != null){
-            result = _current;
-            shiftCurrent();
-        } else {
-            _current = head();
-        }
-        return result;
+        ListItem curr = _current;
+        shiftCurrent();
+        return curr;
     }
 
-    private void shiftCurrent()
-    {
-        _current = _current.getNext();
+    public ListItem previous(){
+        return _previous;
+    }
+
+    public ListItem next(){
+        return _next;
+    }
+
+    private void shiftCurrent() {
+        if(null !=_current){
+            _previous = _current;
+            _current = _current.getNext();
+            _next = _current != null ? _current.getNext(): null;
+        } else {
+            resetCurrent();
+        }
     }
 
     public void insertAfter(OList.ListItem itemAfter, Object objectToInsert)
@@ -35,5 +43,11 @@ class OListExtended<T> extends OList {
         OList.ListItem itemBefore = itemAfter.getNext();
         itemAfter.setNext(itemToInsert);
         itemToInsert.setNext(itemBefore);
+    }
+
+    public void resetCurrent() {
+        _previous = null;
+        _current = head();
+        _next = null != _current ? _current.getNext() : null;
     }
 }

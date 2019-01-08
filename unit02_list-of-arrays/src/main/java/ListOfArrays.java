@@ -1,16 +1,17 @@
 public class ListOfArrays <T> implements IListOfArrays {
 
     private OListExtended<BArray<T>> _arrays;
-    private int _delta;
+    Counter _counter;
 
     private int _index = 0;
     private BArray<T> _targetArray = null;
     private OList.ListItem _targetItem = null;
+    private OList.ListItem _prevItem = null;
+    private OList.ListItem _nextItem = null;
 
     ListOfArrays(int delta){
-        _delta = delta;
+        _counter = new Counter(delta);
         _arrays = new OListExtended<BArray<T>>();
-        addArray();
     }
 
     public Object get(int index) {
@@ -21,52 +22,55 @@ public class ListOfArrays <T> implements IListOfArrays {
 
         if(null != _targetArray)
         {
-            result = _targetArray.get(index);
+            result = _targetArray.get(_index);
         }
 
         return result;
     }
 
-    public void add(Object item) {
+    public void add(Object obj) {
+        if(0 == _counter.arrays()){
+            addArray();
+            _arrays.resetCurrent();
+        }
 
         BArray lastArray = (BArray) _arrays.tail().get();
 
-        if(lastArray.size() == _delta)
+        if(lastArray.size() == _counter.arrayCapacity())
         {
             addArray();
             lastArray = (BArray) _arrays.tail().get();
         }
 
-        lastArray.add(item);
+        lastArray.add(obj);
+        _counter.addElement();
     }
 
     public void insert(int index, Object item) {
 
         setTargets(index);
+        int elementsInArray = _targetArray.size();
 
-        if(null != _targetItem) {
-            if(_targetArray.size() > _index){
-                shiftForward();
-                _targetArray.set(_index, item);
-            } else {
-                _arrays.insertAfter(_targetItem, new BArray<T>(_delta));
-                BArray arrayTo = (BArray)_targetItem.getNext().get();
-                arrayTo.set(0, item);
-            }
+        if(elementsInArray > _index){
+            shiftForward();
+            _targetArray.set(_index, item);
+        } else {
+            _targetArray.add((T)item);
         }
+        _counter.addElement();
     }
 
     private void shiftForward() {
 
         BArray arrayFrom = _targetArray;
+        _arrays.insertAfter(_targetItem, new BArray<T>(_counter.arrayCapacity()));
         BArray arrayTo = (BArray)_targetItem.getNext().get();
 
-        _arrays.insertAfter(_targetItem, new BArray<T>(_delta));
-        for(int i=_index; i<arrayFrom.size(); i++)
+        int numberOfElementsInTargetArray = arrayFrom.size();
+
+        for(int i=_index; i<numberOfElementsInTargetArray; i++)
         {
-            int j = 0;
-            arrayTo.set(j, arrayFrom.cut(i));
-            j++;
+            arrayTo.add(arrayFrom.cut(i));
         }
     }
 
@@ -74,8 +78,20 @@ public class ListOfArrays <T> implements IListOfArrays {
         setTargets(index);
         if(null !=_targetItem){
             _targetArray.remove(_index);
+            _counter.removeElement();
             shiftBack();
+            if(_targetArray.size()==0){
+                removeEmptyCurrentTargetItem();
+            }
         }
+    }
+
+    private void removeEmptyCurrentTargetItem() {
+        if (_prevItem != null && _nextItem != null) {
+            _prevItem.setNext(_nextItem);
+        }
+        _arrays.resetCurrent();
+        _counter.removeArray();
     }
 
     private void shiftBack() {
@@ -90,20 +106,37 @@ public class ListOfArrays <T> implements IListOfArrays {
 
     private void addArray()
     {
-        _arrays.addItem(new BArray<T>(_delta));
+        _arrays.addItem(new BArray<T>(_counter.arrayCapacity()));
+        _counter.addArray();
     }
 
     private void setTargets(int index)
     {
         _index = index;
-        _targetItem = _arrays.current();
+        _arrays.resetCurrent();
+        setListItems();
+
         _targetArray = (BArray) _targetItem.get();
 
-        while(null != _targetArray && _delta < _index)
+        while(null != _targetArray && _targetArray.size() <= _index)
         {
             _index -= _targetArray.size();
-            _targetItem = _arrays.current();
-            _targetArray = (BArray) _targetItem.get();
+            setListItems();
+            _targetArray = _targetItem != null ? (BArray) _targetItem.get() : null;
         }
+    }
+
+    private void setListItems(){
+        _targetItem = _arrays.current();
+        _prevItem = _arrays.previous();
+        _nextItem = _arrays.next();
+    }
+
+    public int arrays(){
+        return _counter.arrays();
+    }
+
+    public int elements(){
+        return _counter.elements();
     }
 }

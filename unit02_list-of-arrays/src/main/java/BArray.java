@@ -1,20 +1,20 @@
 class BArray<T> {
 
-    private int length = 0;
-    private int maxLength;
+    private int _length = 0;
+    private int _capacity;
 
     private Object[] _arr;
 
     public BArray(int size) {
-        maxLength = size;
-        _arr = new Object[maxLength];
+        _capacity = size;
+        _arr = new Object[_capacity];
     }
 
     @SuppressWarnings("unchecked")
     public T get(int index) {
         T result = null;
 
-        if(index < length)
+        if(index < _length)
         {
             result = (T)_arr[index];
         }
@@ -23,19 +23,20 @@ class BArray<T> {
 
     protected void add(T element) {
 
-        if(length < maxLength)
+        if(_length < _capacity)
         {
-            _arr[length] = (Object)element;
-            ++length;
+            _arr[_length] = (Object)element;
+            ++_length;
         }
     }
 
     public int size( ) {
-        return length;
+        return _length;
     }
 
     public void set(int index, Object item) {
         _arr[index] = item;
+        _length++;
     }
 
     public T cut(int index){
@@ -46,6 +47,6 @@ class BArray<T> {
 
     public void remove(int index){
         _arr[index] = null;
-        --length;
+        _length--;
     }
 }
