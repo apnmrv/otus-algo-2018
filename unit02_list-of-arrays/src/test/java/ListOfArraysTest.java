@@ -83,13 +83,7 @@ class ListOfArraysTest {
         assertEquals(20, list.elements());
         assertEquals(2, list.arrays());
 
-        for(int i=0; i<10; i++) {
-            list.remove(0);
-        }
-        assertEquals(10, list.elements());
-        assertEquals(1, list.arrays());
-
-        for(int i=0; i<10; i++) {
+        for(int i=0; i<20; i++) {
             list.remove(0);
         }
         assertEquals(0, list.elements());
