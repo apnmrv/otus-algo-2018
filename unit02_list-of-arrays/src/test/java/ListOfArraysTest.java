@@ -89,4 +89,15 @@ class ListOfArraysTest {
         assertEquals(0, list.elements());
         assertEquals(0, list.arrays());
     }
+
+    @Test
+    void canInsert()
+    {
+        ListOfArrays<Integer> list = new ListOfArrays<>(10);
+        for(int i=0; i<100; i++) {
+            Integer integer = new Integer(i);
+            list.insert(i, integer);
+            assertEquals(i, list.get(i));
+        }
+    }
 }

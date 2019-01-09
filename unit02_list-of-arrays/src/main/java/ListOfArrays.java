@@ -12,6 +12,9 @@ public class ListOfArrays <T> implements IListOfArrays {
     ListOfArrays(int delta){
         _counter = new Counter(delta);
         _arrays = new OListExtended<BArray<T>>();
+        addArray();
+        _counter.addArray();
+        setListItems();
     }
 
     public Object get(int index) {
@@ -49,6 +52,12 @@ public class ListOfArrays <T> implements IListOfArrays {
     public void insert(int index, Object item) {
 
         setTargets(index);
+
+        if(null == _targetItem){
+            addArray();
+            setTargets(index);
+        }
+
         int elementsInArray = _targetArray.size();
 
         if(elementsInArray > _index){
@@ -116,7 +125,7 @@ public class ListOfArrays <T> implements IListOfArrays {
         _arrays.resetCurrent();
         setListItems();
 
-        _targetArray = (BArray) _targetItem.get();
+        _targetArray = _targetItem != null ? (BArray) _targetItem.get() : null;
 
         while(null != _targetArray && _targetArray.size() <= _index)
         {
