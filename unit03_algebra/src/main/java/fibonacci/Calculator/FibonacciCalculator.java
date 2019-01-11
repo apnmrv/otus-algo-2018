@@ -17,7 +17,7 @@ abstract public class FibonacciCalculator implements ICalculator {
         _sequence.put(0, BigInteger.ZERO);
 
         for(int i = 1; i < size; i++){
-            if (i < 3) {
+            if (i < 2) {
                 _fNum = BigInteger.ONE;
             } else {
                 _fNum = fibonacci(i);
