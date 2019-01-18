@@ -1,10 +1,8 @@
 package primes;
 
-import java.util.Iterator;
+public class NoSquareRootsOddsIterator extends PrimesCalculator {
 
-public class PrimesOnlyAsDivisorsIterator extends PrimesCalculator{
-
-    protected PrimesOnlyAsDivisorsIterator(IConvertor convertor) {
+    public NoSquareRootsOddsIterator(IConvertor convertor) {
         super(convertor);
     }
 
@@ -15,14 +13,15 @@ public class PrimesOnlyAsDivisorsIterator extends PrimesCalculator{
 
         for (int i = 3; i <= limit; i += 2)
         {
+            double sqrt = Math.sqrt(i);
+            if(0 == sqrt - (int)sqrt){
+                continue;
+            }
             boolean isPrime = true;
-            double root = Math.sqrt(i);
-
-            for(int prime : _resultArray) {
-                if(prime > root) break;
-                if(0 == i % prime) {
-                    isPrime = false;
-                    break;
+            for(int j = i-1; j > 1; j--)
+            {
+                if(i % j == 0){
+                    isPrime = false; break;
                 }
             }
             if(isPrime) {

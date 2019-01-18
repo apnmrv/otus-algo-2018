@@ -1,8 +1,8 @@
 package primes;
 
-public class NoEvensNoQuadratsIterator extends PrimesCalculator {
+public class SquareLimitedIterator extends PrimesCalculator {
 
-    protected NoEvensNoQuadratsIterator(IConvertor convertor) {
+    protected SquareLimitedIterator(IConvertor convertor) {
         super(convertor);
     }
 
@@ -11,10 +11,11 @@ public class NoEvensNoQuadratsIterator extends PrimesCalculator {
 
         _resultArray.add(2);
 
-        for (int i = 3; 0 != Math.sqrt(i)%2 && i <= limit; i += 2)
+        for (int i = 3; i <= limit; i+=2)
         {
             boolean isPrime = true;
-            for(int j = i-1; j > 1; j--)
+
+            for(int j = 3; j*j <= i; j++)
             {
                 if(i % j == 0){
                     isPrime = false; break;

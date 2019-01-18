@@ -1,8 +1,8 @@
 package primes;
 
-public class SquareRootLimitedIterator extends PrimesCalculator {
+public class OddsIterator extends PrimesCalculator {
 
-    protected SquareRootLimitedIterator(IConvertor convertor) {
+    protected OddsIterator(IConvertor convertor) {
         super(convertor);
     }
 
@@ -14,9 +14,7 @@ public class SquareRootLimitedIterator extends PrimesCalculator {
         for (int i = 3; i <= limit; i+=2)
         {
             boolean isPrime = true;
-            double root = Math.sqrt(i);
-
-            for(int j = 2; j <= root; j++)
+            for(int j = i-1; j > 1; j--)
             {
                 if(i % j == 0){
                     isPrime = false; break;

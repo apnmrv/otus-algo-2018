@@ -1,12 +1,8 @@
 package primes;
 
-import java.util.ArrayList;
+public class SquareRootLimitedOddsIterator extends PrimesCalculator {
 
-public class CalculusEratostheni extends PrimesCalculator {
-
-    private ArrayList<Integer> _numbersToTest = new ArrayList<>();
-
-    protected CalculusEratostheni(IConvertor convertor) {
+    protected SquareRootLimitedOddsIterator(IConvertor convertor) {
         super(convertor);
     }
 
@@ -14,20 +10,13 @@ public class CalculusEratostheni extends PrimesCalculator {
     public int[] getPrimesUpTo(int limit) {
 
         _resultArray.add(2);
-        for(int i = 3; i <= limit; i ++)
-        {
-            _numbersToTest.add(i);
-        }
 
-        for(int j = number : _numbersToTest){
-
-        }
-
+        for (int i = 3; i <= limit; i+=2)
         {
             boolean isPrime = true;
             double root = Math.sqrt(i);
 
-            for(int j = 2; j <= root; j++)
+            for(int j = 3; j <= root; j++)
             {
                 if(i % j == 0){
                     isPrime = false; break;
