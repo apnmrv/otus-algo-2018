@@ -1,7 +1,5 @@
 package primes;
 
-import java.util.Iterator;
-
 public class PrimesIterator extends PrimesCalculator{
 
     protected PrimesIterator(IConvertor convertor) {
@@ -30,6 +28,6 @@ public class PrimesIterator extends PrimesCalculator{
             }
         }
 
-        return _convertor.listToArrAy(_resultArray);
+        return _convertor.listToArray(_resultArray);
     }
 }

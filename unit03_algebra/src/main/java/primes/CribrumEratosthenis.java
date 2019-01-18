@@ -1,7 +1,6 @@
 package primes;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class CribrumEratosthenis extends PrimesCalculator {
 
@@ -24,7 +23,7 @@ public class CribrumEratosthenis extends PrimesCalculator {
             sieveBy(number);
         }
 
-        return _convertor.listToArrAy(_resultArray);
+        return _convertor.listToArray(_resultArray);
     }
 
     private void sieveBy(int divisor) {

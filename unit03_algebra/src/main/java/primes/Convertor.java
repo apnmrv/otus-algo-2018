@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Convertor implements IConvertor {
 
     @Override
-    public int[] listToArrAy(ArrayList<Integer> list) {
+    public int[] listToArray(ArrayList<Integer> list) {
 
         int num = list.size();
 

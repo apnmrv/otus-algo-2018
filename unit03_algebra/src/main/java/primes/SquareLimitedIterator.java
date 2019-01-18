@@ -26,6 +26,6 @@ public class SquareLimitedIterator extends PrimesCalculator {
             }
         }
 
-        return _convertor.listToArrAy(_resultArray);
+        return _convertor.listToArray(_resultArray);
     }
 }

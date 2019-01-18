@@ -30,7 +30,7 @@ public class NoSquaresOddsIterator extends PrimesCalculator {
             }
         }
 
-        return _convertor.listToArrAy(_resultArray);
+        return _convertor.listToArray(_resultArray);
     }
 
     private void removeSquares() {
