@@ -35,7 +35,7 @@ public class App {
 
         calc = new NoSquareRootsOddsIterator(conv);
         estimation = estimate(calc, limit);
-        output("Square Roots excluded odds iteration", limit, estimation);
+        output("Square roots excluded odds iteration", limit, estimation);
 
         calc = new SquareRootLimitedOddsIterator(conv);
         estimation = estimate(calc, limit);
