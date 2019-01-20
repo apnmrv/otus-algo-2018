@@ -13,45 +13,47 @@ public class App {
      * 2) просеивать с квадратов
      * 3) заканчивать, когда n^2 > N
      * */
-    private static int [] result;
+    private static Object [] result;
 
     public static void main(String[] args) throws InterruptedException {
 
-        int limit = 10_000;
-
-        IConvertor conv = new Convertor();
-
-        ICalculator calc = new NaiveIterator(conv);
+        int limit = 100_000;
+        
+        ICalculator calc = new NaiveIterator();
         long estimation = estimate(calc, limit);
         output("Primitive iteration", limit, estimation);
 
-        calc = new OddsIterator(conv);
+        calc = new OddsIterator();
         estimation = estimate(calc, limit);
         output("Odds iteration", limit, estimation);
 
-        calc = new NoSquaresOddsIterator(conv);
+        calc = new NoSquaresOddsIterator();
         estimation = estimate(calc, limit);
         output("Squares excluded odds iteration", limit, estimation);
 
-        calc = new NoSquareRootsOddsIterator(conv);
+        calc = new NoSquareRootsOddsIterator();
         estimation = estimate(calc, limit);
         output("Square roots excluded odds iteration", limit, estimation);
 
-        calc = new SquareRootLimitedOddsIterator(conv);
+        calc = new SquareRootLimitedOddsIterator();
         estimation = estimate(calc, limit);
         output("Square root limited odds iteration", limit, estimation);
 
-        calc = new SquareLimitedIterator(conv);
+        calc = new SquareLimitedIterator();
         estimation = estimate(calc, limit);
         output("Square limited odds iteration", limit, estimation);
 
-        calc = new PrimesIterator(conv);
+        calc = new PrimesIterator();
         estimation = estimate(calc, limit);
         output("Primes only iteration", limit, estimation);
 
-        calc = new CribrumEratosthenis(conv);
+        calc = new CribrumEratosthenis();
         estimation = estimate(calc, limit);
         output("Eratosthenes", limit, estimation);
+
+        calc = new CribrumEratosthenisNoSquares();
+        estimation = estimate(calc, limit);
+        output("Eratosthenes without squares", limit, estimation);
     }
 
     private static long estimate(ICalculator calc, int limit) {
@@ -69,7 +71,7 @@ public class App {
                 method, execTime/1_000_000, limit);
         System.out.printf("%n");
         System.out.printf("Result : ");
-        for(int r:result){
+        for(Object r:result){
             System.out.printf("%d ", r);
         }
         System.out.printf("%n%n");

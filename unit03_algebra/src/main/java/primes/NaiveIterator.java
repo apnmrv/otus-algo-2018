@@ -2,12 +2,8 @@ package primes;
 
 public class NaiveIterator extends PrimesCalculator {
 
-    public NaiveIterator(IConvertor convertor) {
-        super(convertor);
-    }
-
     @Override
-    public int[] getPrimesUpTo(int limit) {
+    public Object[] getPrimesUpTo(int limit) {
 
         for (int i = 2; i <= limit; i++)
         {
@@ -23,6 +19,6 @@ public class NaiveIterator extends PrimesCalculator {
             }
         }
 
-        return _convertor.listToArray(_resultArray);
+        return _resultArray.toArray();
     }
 }

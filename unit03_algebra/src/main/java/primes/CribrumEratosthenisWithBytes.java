@@ -2,9 +2,9 @@ package primes;
 
 import java.util.ArrayList;
 
-public class CribrumEratosthenis extends PrimesCalculator {
+public class CribrumEratosthenisWithBytes extends PrimesCalculator {
 
-    private ArrayList<Integer> _sieve = new ArrayList<>();
+    private ArrayList<Byte> _sieve = new ArrayList<>();
 
     @Override
     public Object[] getPrimesUpTo(int limit) {
@@ -38,7 +38,7 @@ public class CribrumEratosthenis extends PrimesCalculator {
 
     private void fillSieve(int limit) {
         for (int i = 3; i <= limit; i+=2) {
-            _sieve.add(i);
+            _sieve.add(i, (byte) 1);
         }
     }
 }

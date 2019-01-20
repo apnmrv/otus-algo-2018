@@ -2,12 +2,8 @@ package primes;
 
 public class SquareLimitedIterator extends PrimesCalculator {
 
-    protected SquareLimitedIterator(IConvertor convertor) {
-        super(convertor);
-    }
-
     @Override
-    public int[] getPrimesUpTo(int limit) {
+    public Object[] getPrimesUpTo(int limit) {
 
         _resultArray.add(2);
 
@@ -26,6 +22,6 @@ public class SquareLimitedIterator extends PrimesCalculator {
             }
         }
 
-        return _convertor.listToArray(_resultArray);
+        return _resultArray.toArray();
     }
 }

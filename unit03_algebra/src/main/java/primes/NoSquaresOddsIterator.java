@@ -6,12 +6,8 @@ public class NoSquaresOddsIterator extends PrimesCalculator {
 
     private ArrayList<Integer> _numbers = new ArrayList<>();
 
-    public NoSquaresOddsIterator(IConvertor convertor) {
-        super(convertor);
-    }
-
     @Override
-    public int[] getPrimesUpTo(int limit) {
+    public Object[] getPrimesUpTo(int limit) {
         _resultArray.add(2);
         fillNumbers(limit);
         removeSquares();
@@ -30,7 +26,7 @@ public class NoSquaresOddsIterator extends PrimesCalculator {
             }
         }
 
-        return _convertor.listToArray(_resultArray);
+        return _resultArray.toArray();
     }
 
     private void removeSquares() {

@@ -2,7 +2,7 @@ package primes;
 
 import java.util.ArrayList;
 
-public class CribrumEratosthenis extends PrimesCalculator {
+public class CribrumEratosthenisNoSquares extends PrimesCalculator {
 
     private ArrayList<Integer> _sieve = new ArrayList<>();
 
@@ -38,6 +38,7 @@ public class CribrumEratosthenis extends PrimesCalculator {
 
     private void fillSieve(int limit) {
         for (int i = 3; i <= limit; i+=2) {
+            if(_sieve.contains(i/i)) continue;
             _sieve.add(i);
         }
     }

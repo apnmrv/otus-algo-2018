@@ -2,12 +2,8 @@ package primes;
 
 public class OddsIterator extends PrimesCalculator {
 
-    protected OddsIterator(IConvertor convertor) {
-        super(convertor);
-    }
-
     @Override
-    public int[] getPrimesUpTo(int limit) {
+    public Object[] getPrimesUpTo(int limit) {
 
         _resultArray.add(2);
 
@@ -25,6 +21,6 @@ public class OddsIterator extends PrimesCalculator {
             }
         }
 
-        return _convertor.listToArray(_resultArray);
+        return _resultArray.toArray();
     }
 }
