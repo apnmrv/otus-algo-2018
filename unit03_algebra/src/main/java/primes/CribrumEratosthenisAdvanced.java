@@ -33,7 +33,7 @@ public class CribrumEratosthenisAdvanced extends PrimesCalculator {
         _limit = limit;
         _sieve = new byte[_limit+1];
         _previousPrimeIndex = 0;
-        _currentPrimeIndex = 0;
+        _currentPrimeIndex = 2;
     }
 
     private void sieve() {

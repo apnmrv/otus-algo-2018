@@ -17,7 +17,7 @@ public class App {
 
     public static void main(String[] args) throws InterruptedException {
 
-        int limit = 10;
+        int limit = 100000;
         
         ICalculator calc = new NaiveIterator();
         long estimation = estimate(calc, limit);
@@ -47,13 +47,13 @@ public class App {
 //        estimation = estimate(calc, limit);
 //        output("Primes only iteration", limit, estimation);
 
-        calc = new CribrumEratosthenis();
-        estimation = estimate(calc, limit);
-        output("Eratosthenes", limit, estimation);
-
-        calc = new CribrumEratosthenisNoSquares();
-        estimation = estimate(calc, limit);
-        output("Eratosthenes without squares", limit, estimation);
+//        calc = new CribrumEratosthenis();
+//        estimation = estimate(calc, limit);
+//        output("Eratosthenes", limit, estimation);
+//
+//        calc = new CribrumEratosthenisNoSquares();
+//        estimation = estimate(calc, limit);
+//        output("Eratosthenes without squares", limit, estimation);
 
         calc = new CribrumEratosthenisAdvanced();
         estimation = estimate(calc, limit);
