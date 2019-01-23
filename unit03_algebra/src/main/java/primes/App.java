@@ -17,43 +17,47 @@ public class App {
 
     public static void main(String[] args) throws InterruptedException {
 
-        int limit = 100_000;
+        int limit = 100000;
         
         ICalculator calc = new NaiveIterator();
         long estimation = estimate(calc, limit);
         output("Primitive iteration", limit, estimation);
 
-        calc = new OddsIterator();
-        estimation = estimate(calc, limit);
-        output("Odds iteration", limit, estimation);
+//        calc = new OddsIterator();
+//        estimation = estimate(calc, limit);
+//        output("Odds iteration", limit, estimation);
+//
+//        calc = new NoSquaresOddsIterator();
+//        estimation = estimate(calc, limit);
+//        output("Squares excluded odds iteration", limit, estimation);
+//
+//        calc = new NoSquareRootsOddsIterator();
+//        estimation = estimate(calc, limit);
+//        output("Square roots excluded odds iteration", limit, estimation);
+//
+//        calc = new SquareRootLimitedOddsIterator();
+//        estimation = estimate(calc, limit);
+//        output("Square root limited odds iteration", limit, estimation);
+//
+//        calc = new SquareLimitedIterator();
+//        estimation = estimate(calc, limit);
+//        output("Square limited odds iteration", limit, estimation);
+//
+//        calc = new PrimesIterator();
+//        estimation = estimate(calc, limit);
+//        output("Primes only iteration", limit, estimation);
 
-        calc = new NoSquaresOddsIterator();
-        estimation = estimate(calc, limit);
-        output("Squares excluded odds iteration", limit, estimation);
+//        calc = new CribrumEratosthenis();
+//        estimation = estimate(calc, limit);
+//        output("Eratosthenes", limit, estimation);
+//
+//        calc = new CribrumEratosthenisNoSquares();
+//        estimation = estimate(calc, limit);
+//        output("Eratosthenes without squares", limit, estimation);
 
-        calc = new NoSquareRootsOddsIterator();
+        calc = new CribrumEratosthenisAdvanced();
         estimation = estimate(calc, limit);
-        output("Square roots excluded odds iteration", limit, estimation);
-
-        calc = new SquareRootLimitedOddsIterator();
-        estimation = estimate(calc, limit);
-        output("Square root limited odds iteration", limit, estimation);
-
-        calc = new SquareLimitedIterator();
-        estimation = estimate(calc, limit);
-        output("Square limited odds iteration", limit, estimation);
-
-        calc = new PrimesIterator();
-        estimation = estimate(calc, limit);
-        output("Primes only iteration", limit, estimation);
-
-        calc = new CribrumEratosthenis();
-        estimation = estimate(calc, limit);
-        output("Eratosthenes", limit, estimation);
-
-        calc = new CribrumEratosthenisNoSquares();
-        estimation = estimate(calc, limit);
-        output("Eratosthenes without squares", limit, estimation);
+        output("Eratosthenes advanced", limit, estimation);
     }
 
     private static long estimate(ICalculator calc, int limit) {
