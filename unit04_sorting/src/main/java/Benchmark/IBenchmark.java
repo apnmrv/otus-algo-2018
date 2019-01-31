@@ -1,6 +1,6 @@
-package Main;
+package Benchmark;
 
-import Main.Benchmark.IPrintableReport;
+import Main.ISorter;
 
 public interface IBenchmark {
 

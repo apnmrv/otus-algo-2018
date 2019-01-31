@@ -1,4 +1,4 @@
-package Main.Benchmark;
+package Benchmark;
 
 public class SingleRunData implements IRunData {
     private String _algorithm;

@@ -1,6 +1,5 @@
-package Main.Benchmark;
+package Benchmark;
 
-import Main.IBenchmark;
 import Main.IRandomizer;
 import Main.ISorter;
 import Main.Randomizer;

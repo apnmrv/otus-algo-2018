@@ -1,18 +1,16 @@
 package Main;
 
-import Main.Benchmark.Benchmark;
-import Main.Benchmark.IPrintableReport;
-import ShellSorter.GapsSequenser.CiuraSequence;
-import ShellSorter.ShellSorter;
-import ShellSorter.GapsSequenser.ShellSequence;
-import InsertionSorter.InsertionSorter;
+import Benchmark.*;
+import ShellSorter.*;
+import ShellSorter.GapsSequenser.*;
+import InsertionSorter.*;
 
 public class App {
 
 
     public static void main(String [] args) {
 
-        int size = 1000;
+        int size = 10000;
         Printer printer = new Printer();
 
         /*

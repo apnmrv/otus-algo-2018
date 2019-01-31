@@ -1,4 +1,4 @@
-package Main.Benchmark;
+package Benchmark;
 
 public interface IRunData {
     String algorithm();

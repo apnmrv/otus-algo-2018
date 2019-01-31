@@ -1,6 +1,6 @@
 package Main;
 
-import Main.Benchmark.IPrintableReport;
+import Benchmark.IPrintableReport;
 
 import java.util.List;
 

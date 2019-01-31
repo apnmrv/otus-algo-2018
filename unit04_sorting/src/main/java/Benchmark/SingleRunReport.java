@@ -1,4 +1,4 @@
-package Main.Benchmark;
+package Benchmark;
 
 import java.util.ArrayList;
 import java.util.List;
