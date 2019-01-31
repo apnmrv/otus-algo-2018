@@ -3,23 +3,27 @@ package Heapsorter;
 public class HeapBuilder {
 
     private int [] _array;
-    private int _size;
+    private int _lastParentIdx;
+    private boolean _ready;
 
     public int[] heapIt(int [] array){
 
         _array = array;
-        _size = _array.length;
-        int firstParentIdx = ((_size-1)>>2)-1;
-        checkParent(firstParentIdx);
+        _ready = false;
+        _lastParentIdx = ((array.length-1)>>2)-1;
+
+        checkParents();
+
         return _array;
     }
 
-    private void checkParent(int idx){
-        for(int parentIdx = idx; parentIdx >= 0; parentIdx--) {
-            int firstbornIdx = firstbornIdxOf(parentIdx);
-            if(_array[parentIdx] < _array[firstbornIdx]) {
-                interchange(parentIdx, firstbornIdx);
-                checkParent(parentIdx);
+    private void checkParents(){
+        for(int i = _lastParentIdx; i >= 0 && !_ready; i--) {
+            _ready = true;
+            int firstbornIdx = firstbornIdxOf(i);
+            if(_array[i] < _array[firstbornIdx]) {
+                interchange(i, firstbornIdx);
+                _ready = false;
             }
         }
     }
