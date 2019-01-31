@@ -2,10 +2,10 @@ package ShellSorter.GapsSequenser;
 
 public class CiuraSequence implements IGapsSequence {
 
-    private static int [] ciuraGaps = {1,4,10,23,57,132,301,701};
+    private static int [] ciuraGaps = {701, 301, 132, 57, 23, 10, 4, 1};
 
     @Override
-    public int[] getGapsUpto(int number) {
+    public int[] sequence(int number) {
         return ciuraGaps;
     }
 }

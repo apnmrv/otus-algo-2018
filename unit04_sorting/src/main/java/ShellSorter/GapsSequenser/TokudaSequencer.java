@@ -1,17 +1,17 @@
 package ShellSorter.GapsSequenser;
 
-public class TokudaSequencer implements IGapsSequence{
+public class TokudaSequencer{
 
-    @Override
-    public int[] getGapsUpto(int number) {
-        int [] tokudaGaps = new int[number];
-        tokudaGaps[0] = 1;
-
-        for (int i = 1; tokudaGaps[i-1] < number; i++)
-        {
-            tokudaGaps[i] = (9*(9/4)^(i-1)-4)/5;
-        }
-
-        return tokudaGaps;
-    }
+//    @Override
+//    public Object[] sequence(int number) {
+//        int [] tokudaGaps = new int[number];
+////        tokudaGaps[0] = 1;
+////
+////        for (int i = 1; tokudaGaps[i-1] < number; i++)
+////        {
+////            tokudaGaps[i] = (9*(9/4)^(i-1)-4)/5;
+////        }
+//
+//        return tokudaGaps;
+//    }
 }
