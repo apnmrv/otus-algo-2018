@@ -7,14 +7,14 @@ public class AllInOneHeapSorter implements ISorter {
     private static final int FIRST_PARENT_IDX = 0;
 
     private int[] _array;
-    private int _size;
+    private int _heapSize;
     private int _lastChildIdx;
     private int _lastParentIdx;
 
 
     public int[] sort(int[] arr){
         _array = arr;
-        _size = arr.length;
+        _heapSize = arr.length;
 
         setLimits();
         buildHeap();
@@ -25,29 +25,29 @@ public class AllInOneHeapSorter implements ISorter {
 
     private void sortHeap() {
 
-        while(_size > 1) {
+        while(_heapSize > 1) {
             interchange(FIRST_PARENT_IDX, _lastChildIdx);
-            _size--;
+            _heapSize--;
             setLimits();
-            drow(FIRST_PARENT_IDX);
+            drown(FIRST_PARENT_IDX);
         }
     }
 
     private void setLimits()
     {
-        _lastChildIdx = _size - 1;
-        _lastParentIdx = (_size-1)/2 - _size%2;
+        _lastChildIdx = _heapSize - 1;
+        _lastParentIdx = (_heapSize -1)/2 - _heapSize %2;
     }
 
     private void buildHeap(){
         int parentIdx = _lastParentIdx;
         while(parentIdx >= FIRST_PARENT_IDX){
-            drow(parentIdx);
+            drown(parentIdx);
             parentIdx --;
         }
     }
 
-    private void drow(int parentIdx){
+    private void drown(int parentIdx){
         int firstbornIdx;
         while(parentIdx <= _lastParentIdx){
             firstbornIdx = firstbornIdxOf(parentIdx);
