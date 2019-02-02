@@ -1,3 +1,5 @@
+package Randomizer;
+
 public class Randomizer implements IRandomizer {
 
     private int [] result;

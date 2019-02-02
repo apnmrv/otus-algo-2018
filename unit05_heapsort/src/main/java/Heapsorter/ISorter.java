@@ -1,5 +1,5 @@
 package Heapsorter;
 
-public interface ISorter {
+public interface ISorter extends INamed {
     public int[] sort(int [] array);
 }

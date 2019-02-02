@@ -1,6 +1,10 @@
-public class HeapSorter {
+package Heapsorter;
 
-    private static final int _firstParentIdx = 0;
+public class AllInOneHeapSorter implements ISorter {
+
+    private static final String NAME = "Heapsorter";
+
+    private static final int FIRST_PARENT_IDX = 0;
 
     private int[] _array;
     private int _size;
@@ -22,10 +26,10 @@ public class HeapSorter {
     private void sortHeap() {
 
         while(_size > 1) {
-            interchange(_firstParentIdx, _lastChildIdx);
+            interchange(FIRST_PARENT_IDX, _lastChildIdx);
             _size--;
             setLimits();
-            drow(_firstParentIdx);
+            drow(FIRST_PARENT_IDX);
         }
     }
 
@@ -37,7 +41,7 @@ public class HeapSorter {
 
     private void buildHeap(){
         int parentIdx = _lastParentIdx;
-        while(parentIdx >= _firstParentIdx){
+        while(parentIdx >= FIRST_PARENT_IDX){
             drow(parentIdx);
             parentIdx --;
         }
@@ -74,5 +78,10 @@ public class HeapSorter {
         int temp = _array[idx1];
         _array[idx1] = _array[idx2];
         _array[idx2] = temp;
+    }
+
+    @Override
+    public String title() {
+        return NAME;
     }
 }
