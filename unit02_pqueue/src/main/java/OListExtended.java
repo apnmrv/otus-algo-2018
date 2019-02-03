@@ -19,6 +19,9 @@ public class OListExtended <T> extends OList {
     }
 
     private void shiftHead(ListItem head) {
+        if(head == _tail){
+            _tail = null;
+        }
         _head = head.getNext();
     }
 }
