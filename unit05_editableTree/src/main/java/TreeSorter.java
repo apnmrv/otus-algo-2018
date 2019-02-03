@@ -1,6 +1,4 @@
-package Heapsorter;
-
-public class AllInOneHeapSorter implements ISorter {
+public class TreeSorter {
 
     private static final String NAME = "Heapsorter";
 
@@ -80,7 +78,6 @@ public class AllInOneHeapSorter implements ISorter {
         _array[idx2] = temp;
     }
 
-    @Override
     public String title() {
         return NAME;
     }
