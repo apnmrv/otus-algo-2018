@@ -3,14 +3,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DArrayExtendedTest {
+class DArrayTest {
 
     private static final int BLOCK_SIZE = 100;
-    private DArrayExtended _dArrToTest;
+    private DArray _dArrToTest;
 
     @BeforeEach
     void setUp() {
-        _dArrToTest = new DArrayExtended(BLOCK_SIZE);
+        _dArrToTest = new DArray(BLOCK_SIZE);
     }
 
     @Test
@@ -29,5 +29,15 @@ class DArrayExtendedTest {
             _dArrToTest.add("string_"+i);
             assertEquals("string_"+i, _dArrToTest.get(i));
         }
+    }
+
+    void canInsertElement(){
+        DArray dArr = new DArray();
+        dArr.insert(0, new int [] {3, 4, 5, 6});
+        dArr.insert(3, "string");
+        dArr.insert(8, 3);
+
+        assertEquals(3, dArr.get(8));
+        assertEquals("string", dArr.get(3));
     }
 }

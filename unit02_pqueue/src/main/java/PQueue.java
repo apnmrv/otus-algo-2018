@@ -1,25 +1,29 @@
 public class PQueue implements IPQueue {
 
-    private PQueueLevel queueLevel;
-    private DArrayExtended pqueue;
+    private DArray _levels;
 
     PQueue(){
-        pqueue = new DArrayExtended();
-        setLevel(0);
+        _levels = new DArray();
+        setLevels(10);
     }
 
-    private void setLevel(int i) {
-        queueLevel = new PQueueLevel();
-        pqueue.add(i, queueLevel);
+    private void setLevels(int levels) {
+        int actual = _levels.size();
+        int extended = actual+levels;
+        for(int i = actual; i < extended; i++){
+            PQueueLevel queueLevel = new PQueueLevel();
+            _levels.add(queueLevel);
+        }
     }
 
     public <T> void enqueue(int priority, T item) {
 
-        queueLevel = (PQueueLevel) pqueue.get(priority);
-        if(null == queueLevel) {
-            setLevel(priority);
+        if(priority > _levels.size()-1) {
+            setLevels(10);
         }
-        queueLevel.add(item);
+
+        PQueueLevel level = (PQueueLevel) _levels.get(priority);
+        level.add(item);
     }
 
     public <T> T dequeue() {
@@ -28,15 +32,16 @@ public class PQueue implements IPQueue {
 
     private <T> T current() {
         T current = null;
-        int i = 0;
-        int levels = pqueue.size();
-
-        do{
-            queueLevel = (PQueueLevel) pqueue.get(i);
-            current = (T) queueLevel.firstOne();
-            i++;
-        } while(null == current && i < levels);
-
+        int levels = _levels.capacity();
+        int lNumber = 0;
+        
+        while(null == current && lNumber < levels){
+            PQueueLevel level = (PQueueLevel) _levels.get(lNumber);
+            if(!level.isEmpty()) {
+                current = (T) level.pickFirst();
+            }
+            lNumber++;
+        }
         return current;
     }
 }

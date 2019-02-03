@@ -1,20 +1,24 @@
 public class PQueueLevel <T> {
 
-    private OListExtended list;
+    private OListExtended _list;
 
     PQueueLevel(){
-        list = new OListExtended();
+        _list = new OListExtended();
     }
 
     public void add(T element)
     {
-        list.addItem(element);
+        _list.addItem(element);
     }
 
-    public T firstOne() {
+    public T pickFirst() {
 
-        T head = (T) list.first();
+        T head = (T) _list.first();
 
         return head;
+    }
+
+    public boolean isEmpty() {
+        return null == _list.head();
     }
 }

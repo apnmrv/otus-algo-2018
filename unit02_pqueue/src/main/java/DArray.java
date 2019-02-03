@@ -1,16 +1,40 @@
-class DArray<T> {
+public class DArray<T>{
 
-    protected Object[] _arr;
+    private Object[] _arr;
+    private int _blockSize = 10;
+    private int _elementsCount = 0;
 
-    protected DArray() {
+    DArray(){
+        _arr = new Object[_blockSize];
     }
 
-    @SuppressWarnings("unchecked")
+    DArray(int blockSize){
+        _blockSize = blockSize;
+        _arr = new Object[_blockSize];
+    }
+
     T get(int index) {
-        return (T)_arr[index];
+        T result = null;
+        if(index >=0 && index < _elementsCount){
+            result = (T)_arr[index];
+        }
+        return result;
     }
 
-    protected void relocate(int newsize, int index) {
+    private void relocate() {
+        int currSize = capacity();
+        int newSize = currSize + _blockSize;
+
+        Object[] tmp = new Object[newSize];
+
+        for(int i=0; i < currSize; i++) {
+            tmp[i] = _arr[i];
+        }
+
+        _arr = tmp;
+    }
+
+    private void relocate(int newsize, int index) {
         Object[] tmp = new Object[newsize];
 
         if (_arr != null)
@@ -22,17 +46,34 @@ class DArray<T> {
         _arr = tmp;
     }
 
-    protected void add(int index, T element) {
+    void add(Object element) {
+        if (false == canAdd()){
+            relocate();
+        }
+        _arr[_elementsCount] = element;
+        _elementsCount++;
+    }
+
+    void insert(int index, T element) {
         if (_arr == null || _arr.length <= index)
             relocate(index+1, index);
         _arr[index] = (Object)element;
+        _elementsCount++;
     }
 
-    protected void set(int index, T element) {
-        _arr[index] = (Object)element;
+    private boolean canAdd() {
+        boolean answer = true;
+        if(_elementsCount == capacity()){
+            answer = false;
+        }
+        return answer;
     }
 
-    protected int size( ) {
+    int size(){
+        return _elementsCount;
+    }
+
+    int capacity( ) {
         return _arr.length;
     }
 }
