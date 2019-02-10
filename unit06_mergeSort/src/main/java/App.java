@@ -1,37 +1,28 @@
+import MergeSorter.ISorter;
+import MergeSorter.Sorter;
+import Randomizer.*;
+
 public class App {
 
     public static void main (String ... args) {
 
-//        int [] array = {1, 1, 1, 1, 5, 6, 7, 8};
-//        int [] array = {5, 7, 8, 9, 2, 2, 2, 2};
-//        int [] array = {5, 7, 8, 9, 10, 2, 2, 2, 2};
-//        int [] array = {5, 7, 8, 9, 2, 2, 2, 2, 2};
-        int[] array = {2, 1};
+        ISorter s = new Sorter();
 
-        int []  result = merge(array, 1);
+        IRandomizer rand = new Randomizer();
 
-        for (int i = 0; i < array.length; i++){
-            System.out.printf("%d ", result[i]);
+        int [] array = rand.getUniques(0, 10);
+
+        System.out.printf("%nBefore :");
+
+        for (int i1 : array) {
+            System.out.printf("%d ", i1);
         }
-    }
 
-    public static int [] merge(int[] arrIn, int median){
+        array = s.sort(array);
 
-        int size = arrIn.length;
-        int [] arrOut = new int[size];
-        int lPtr = 0;
-        int rPtr = median;
-
-        for(int i = 0; i < size; i++){
-            if(lPtr < median &&
-                    (rPtr >= size || arrIn[lPtr]<= arrIn[rPtr])){
-                arrOut[i] = arrIn[lPtr];
-                lPtr++;
-            } else {
-                arrOut[i] = arrIn[rPtr];
-                rPtr++;
-            }
+        System.out.printf("%nAfter  :");
+        for (int i1 : array) {
+            System.out.printf("%d ", i1);
         }
-        return arrOut;
     }
 }

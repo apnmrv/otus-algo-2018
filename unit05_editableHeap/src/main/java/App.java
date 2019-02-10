@@ -1,14 +1,12 @@
 import Randomizer.Randomizer;
 
-import java.util.zip.ZipEntry;
-
 public class App {
 
     private static final int SIZE = 20;
 
     public static void main(String... args){
 
-        int[] data = new Randomizer().getUniques(0, SIZE, SIZE);
+        int[] data = new Randomizer().getUniques(0, SIZE);
 
         HeapBuilder builder = new HeapBuilder();
         HeapSorter sorter = new HeapSorter();
