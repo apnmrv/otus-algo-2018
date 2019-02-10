@@ -38,16 +38,17 @@ public class Heap {
     }
 
     public void removeNode(int id){
-        if(id <= _size) {
+        if(id >=0 && id < _size) {
             _data[id] = 0;
             interchange(id, _lastChildId);
-            drown(id);
+            int idToDrown = whichIsElder(id, parentOf(id));
+            drown(idToDrown);
             reduceData();
         }
     }
 
-    public void insertNode(int id){
-        
+    private int parentOf(int id) {
+        return (id-1)/2;
     }
 
     private void reduceData() {
@@ -86,7 +87,7 @@ public class Heap {
 
     void drown(int parentId){
         int firstbornId;
-        while(parentId <= lastParentId()){
+        while(parentId <= _lastParentId){
             firstbornId = firstbornIdOf(parentId);
             if(parentId != whichIsElder(parentId, firstbornId)) {
                 interchange(parentId, firstbornIdOf(parentId));
