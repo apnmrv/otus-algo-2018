@@ -2,23 +2,32 @@ package MergeSorter;
 
 import Randomizer.IRandomizer;
 import Randomizer.Randomizer;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import sun.jvm.hotspot.opto.Block_Array;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SorterTest {
 
-    @Test
-    void sort() {
+    private static final int MIN = 1;
+    private static final int MAX = 100;
+    private static final int SIZE = 1_000;
+    private static int[] _arrayIn;
 
-        ISorter s = new SimpleMergeSorter();
+    @BeforeAll
+    public static void setUp() {
         IRandomizer r = new Randomizer();
+        _arrayIn = r.getRandomeSequence(MIN, MAX, SIZE);
+    }
 
-        int [] arrIn = r.getUniques(1, 10);
-        int [] arrOut = s.sort(arrIn);
-
-        int [] arrExpected = {1,2,3,4,5,6,7,8,9,10};
-
-        assertArrayEquals(arrExpected, arrOut);
+    @Test
+    void canSortRandomSequences(){
+        ISorter s = new SimpleMergeSorter();
+        int [] arrayOut = s.sort(_arrayIn);
+        for(int i = 0; i < arrayOut.length-1; i++) {
+            if(arrayOut[i]>arrayOut[i+1]) fail("Check your code, pal");
+        }
+        assertTrue(true);
     }
 }
