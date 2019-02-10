@@ -6,7 +6,9 @@ public class App {
 
     public static void main(String... args){
 
-        int[] data = new Randomizer().getUniques(0, SIZE);
+//        int[] data = new Randomizer().getUniques(0, SIZE);
+
+        int [] data = {7,6,2,5,3,1,0,4};
 
         HeapBuilder builder = new HeapBuilder();
         HeapSorter sorter = new HeapSorter();
@@ -14,17 +16,14 @@ public class App {
         Heap heap = builder.build(data.clone());
         print((sorter.sortHeap(heap)));
 
-        for(int i = 1; i < SIZE; i++)
+        for(int i = 7; i > 0; i--)
         {
             Heap h = builder.build(data.clone());
-
-            for (int j = 0; j < i; j++) {
-                h.removeNode(1);
+            for(int j = 1; j < i; j++) {
+                h.removeNode(i-1);
             }
-
             print((sorter.sortHeap(h)));
         }
-
     }
 
     private static void print(int[] data) {
