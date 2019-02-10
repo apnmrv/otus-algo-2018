@@ -2,7 +2,6 @@ package MergeSorter;
 
 import Randomizer.IRandomizer;
 import Randomizer.Randomizer;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +11,7 @@ class SorterTest {
     @Test
     void sort() {
 
-        ISorter s = new Sorter();
+        ISorter s = new SimpleMergeSorter();
         IRandomizer r = new Randomizer();
 
         int [] arrIn = r.getUniques(1, 10);

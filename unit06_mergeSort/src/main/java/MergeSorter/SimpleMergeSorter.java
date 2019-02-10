@@ -1,6 +1,6 @@
 package MergeSorter;
 
-public class Sorter implements ISorter {
+public class SimpleMergeSorter implements ISorter {
     private int[] _arrIn;
     private int [] _arrOut;
 

@@ -1,16 +1,16 @@
 import MergeSorter.ISorter;
-import MergeSorter.Sorter;
+import MergeSorter.SimpleMergeSorter;
 import Randomizer.*;
 
 public class App {
 
     public static void main (String ... args) {
 
-        ISorter s = new Sorter();
+        ISorter s = new SimpleMergeSorter();
 
         IRandomizer rand = new Randomizer();
 
-        int [] array = rand.getUniques(0, 10);
+        int [] array = rand.getRandomeSequence(100, 1000, 100);
 
         System.out.printf("%nBefore :");
 
