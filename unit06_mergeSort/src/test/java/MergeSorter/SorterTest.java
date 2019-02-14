@@ -17,7 +17,7 @@ class SorterTest {
     @BeforeAll
     public static void setUp() {
         IRandomizer r = new Randomizer();
-        _arrayIn = r.getRandomeSequence(MIN, MAX, SIZE);
+        _arrayIn = r.getRandomSequence(MIN, MAX, SIZE);
     }
 
     @Test
@@ -25,7 +25,8 @@ class SorterTest {
         ISorter s = new SimpleMergeSorter();
         int [] arrayOut = s.sort(_arrayIn);
         for(int i = 0; i < arrayOut.length-1; i++) {
-            if(arrayOut[i]>arrayOut[i+1]) fail("Check your code, pal");
+            if(arrayOut[i]>arrayOut[i+1])
+                fail("Check your code, pal");
         }
         assertTrue(true);
     }

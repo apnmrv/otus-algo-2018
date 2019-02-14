@@ -10,7 +10,7 @@ public class App {
 
         IRandomizer rand = new Randomizer();
 
-        int [] array = rand.getRandomeSequence(100, 1000, 100);
+        int [] array = rand.getRandomSequence(100, 1000, 100);
 
         System.out.printf("%nBefore :");
 
