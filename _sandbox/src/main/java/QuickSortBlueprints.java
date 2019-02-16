@@ -20,49 +20,51 @@ public class QuickSortBlueprints {
         if (lPtr>=rPtr)
             return;
 
-        int pivotIdx = partitionLikeLomuto(lPtr, rPtr);
+        int pivotIdx = partitionLikeHoar(lPtr, rPtr);
 
-        sortWithLomuto(lPtr, pivotIdx);
-        sortWithLomuto(pivotIdx, rPtr);
+        sortWithHoar(lPtr, pivotIdx-1);
+        sortWithHoar(pivotIdx+1, rPtr);
     }
 
     public int partitionLikeLomuto(int lPtr, int rPtr) {
 
         int pivot = __arr[rPtr];
-        int i = lPtr;
+        int idx = lPtr;
 
         for (int j = lPtr; j < rPtr; j++) {
-            if (__arr[j] < pivot){
-                swap(i, j);
-                i++;
+            if (__arr[j] <= pivot){
+                swap(idx, j);
+                idx++;
             }
         }
-        swap(i, rPtr);
+        swap(idx, rPtr);
 
-        return i;
+        return idx;
     }
 
-    public int partitionLikeHoar(int lPointer, int rPointer) {
-        int pivot = __arr[(lPointer+rPointer)/2];
+    public int partitionLikeHoar(int idx1, int idx2) {
+        int pivotIdx = (idx1+idx2)/2;
+        int pivot = __arr[(idx1+idx2)/2];
+        swap(idx1, pivotIdx);
 
-        int i = lPointer-1;
-        int j = rPointer+1;
+        int i = idx1;
+        int j = idx2+1;
 
         while(true){
             do
                 i++;
-            while (__arr[i] < pivot);
+            while (__arr[i] < pivot && i < idx2);
 
             do
                 j--;
-            while(__arr[j] > pivot);
+            while(__arr[j] > pivot && j > idx1);
 
-            if ( i >= j ) {
+            if (i >= j)
                 break;
-            }
+
             swap(i, j);
         }
-        swap(i, j);
+        swap(idx1, j);
         return j;
     }
 

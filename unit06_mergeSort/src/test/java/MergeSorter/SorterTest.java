@@ -10,8 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class SorterTest {
 
     private static final int MIN = 1;
-    private static final int MAX = 100;
-    private static final int SIZE = 1_000;
+    private static final int MAX = 10;
+    private static final int SIZE = 10;
     private static int[] _arrayIn;
 
     @BeforeAll

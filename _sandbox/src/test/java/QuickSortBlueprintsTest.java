@@ -12,7 +12,7 @@ class QuickSortBlueprintsTest {
     @BeforeEach
     void setUp() {
         IRandomizer r = new Randomizer();
-        __randomArray = r.getRandomSequence(1, 100_000, 100_000_000);
+        __randomArray = r.getRandomSequence(1, 100, 100);
         __equalsArray = new int [] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
     }
 
@@ -38,6 +38,14 @@ class QuickSortBlueprintsTest {
         int pivotIdx = quickSortBlueprints.partitionLikeHoar(0, __equalsArray.length-1);
 
         assertTrue(isPreparedProperly(pivotIdx, __equalsArray));
+    }
+
+    @Test
+    void testHoarPartitionsRandomArray(){
+        QuickSortBlueprints quickSortBlueprints = new QuickSortBlueprints(__randomArray);
+        int pivotIdx = quickSortBlueprints.partitionLikeHoar(0, __randomArray.length-1);
+
+        assertTrue(isPreparedProperly(pivotIdx, __randomArray));
     }
 
     boolean isPreparedProperly(int pivotIdx, int [] array){
@@ -73,9 +81,13 @@ class QuickSortBlueprintsTest {
     @Test
     void testQuickSortRandomWithHoar(){
 
-        QuickSortBlueprints quickSortBlueprints = new QuickSortBlueprints(__randomArray);
-        quickSortBlueprints.sortWithHoar(0, __randomArray.length-1);
-        assertTrue(isSortedProperly(__randomArray));
+        for(int i = 0; i < 100; i++) {
+
+            int [] arr = (new Randomizer()).getRandomSequence(0, 100, 100);
+            QuickSortBlueprints quickSortBlueprints = new QuickSortBlueprints(arr);
+            quickSortBlueprints.sortWithHoar(0, arr.length-1);
+            assertTrue(isSortedProperly(arr));
+        }
     }
 
     @Test
