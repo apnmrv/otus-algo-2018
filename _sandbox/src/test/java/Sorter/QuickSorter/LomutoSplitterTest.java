@@ -1,8 +1,6 @@
 package Sorter.QuickSorter;
 
 import Randomizer.Randomizer;
-import Sorter.ArrayHelper;
-import Sorter.QuickSorter.LomutoSplitter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,7 +13,7 @@ class LomutoSplitterTest {
 
     @BeforeEach
     void setUp() {
-        __splitter = new LomutoSplitter(new ArrayHelper());
+        __splitter = new LomutoSplitter();
         __randomSequence = (new Randomizer()).getRandomSequence(0, 100, 100);
         __equalsSequence = new int [] { 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 };
     }
@@ -23,7 +21,7 @@ class LomutoSplitterTest {
     @Test
     void testSplitsRandomSequenceAsRequired(){
 
-        int pivot = __splitter.split(__randomSequence, 0, __randomSequence.length-1);
+        int pivot = __splitter.split(__randomSequence, 0, __randomSequence.length-1, __randomSequence.length-1);
 
         assertTrue(isSplittedProperly(pivot, __randomSequence));
     }
@@ -31,7 +29,7 @@ class LomutoSplitterTest {
     @Test
     void testSplitsSequenceOfEqualsAsRequired(){
 
-        int pivot = __splitter.split(__equalsSequence, 0, __equalsSequence.length-1);
+        int pivot = __splitter.split(__equalsSequence, 0, __equalsSequence.length-1, __equalsSequence.length-1);
 
         assertTrue(isSplittedProperly(pivot, __equalsSequence));
     }

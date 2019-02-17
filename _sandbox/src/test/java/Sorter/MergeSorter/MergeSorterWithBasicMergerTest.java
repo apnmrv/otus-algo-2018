@@ -1,26 +1,24 @@
-package Sorter.QuickSorter;
+package Sorter.MergeSorter;
 
 import Sorter.SorterTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-class LomuttoQSorterTest extends SorterTest {
+class MergeSorterWithBasicMergerTest extends SorterTest {
 
     @BeforeEach
     public void setUp() {
         super.setUp();
-        _sorter = new LomutoQSorter();
+        _sorter = new MSorterBasic(new BasicMerger());
     }
 
     @Test
-    void testRandomSequences(){
+    public void testRandomSequencesSorting(){
         super.testRandomSequencesSorting();
     }
 
     @Test
-    void testCanSortEqualsSequences(){
+    public void testEqualsSequencesSorting(){
         super.testEqualsSequencesSorting();
     }
 }

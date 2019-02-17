@@ -1,41 +1,41 @@
-package Sorter.QuickSorter;
+package Sorter;
 
 import Randomizer.Randomizer;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class QSorterTest {
+public class SorterTest {
 
-    private static int SIZE = 1000;
+    private static int SIZE = 50;
     private static int MIN = 0;
-    private static int MAX = 1000;
+    private static int MAX = 50;
     private static int ROTATE_RANDOM = 10;
 
     private int[] __randomArray;
     private int[] __equalsArray;
     private Randomizer __randomizer;
 
-    protected QSorter _qSorter;
+    protected ISorter _sorter;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         __randomizer = new Randomizer();
         __randomArray = __randomizer.getRandomSequence(MIN, MAX, SIZE);
 
         __equalsArray = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
     }
 
-    void testRandomSequencesSorting(){
+    public void testRandomSequencesSorting(){
         for(int i = 0; i < ROTATE_RANDOM; i++) {
             int [] arr = __randomizer.getRandomSequence(MIN,MAX,SIZE);
-            _qSorter.sort(arr);
+            _sorter.sort(arr);
             assertTrue(isSortedProperly(arr));
         }
     }
 
-    void testEqualsSequencesSorting() {
-        _qSorter.sort(__equalsArray);
+    public void testEqualsSequencesSorting() {
+        _sorter.sort(__equalsArray);
         assertTrue(isSortedProperly(__equalsArray));
     }
 

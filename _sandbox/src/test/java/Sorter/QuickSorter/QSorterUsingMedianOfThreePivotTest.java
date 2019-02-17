@@ -4,18 +4,18 @@ import Sorter.SorterTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
-class LomuttoQSorterTest extends SorterTest {
+class QSorterUsingMedianOfThreePivotTest extends SorterTest {
 
     @BeforeEach
     public void setUp() {
         super.setUp();
-        _sorter = new LomutoQSorter();
+        _sorter = new QSorterUsingMedianOfThreePivot(15);
     }
 
     @Test
-    void testRandomSequences(){
+    public void testRandomSequencesSorting(){
         super.testRandomSequencesSorting();
     }
 
@@ -23,4 +23,5 @@ class LomuttoQSorterTest extends SorterTest {
     void testCanSortEqualsSequences(){
         super.testEqualsSequencesSorting();
     }
+
 }

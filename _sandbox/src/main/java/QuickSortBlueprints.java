@@ -16,14 +16,14 @@ public class QuickSortBlueprints {
         sortWithLomuto(pivotIdx+1, rPtr);
     }
 
-    public void sortWithHoar(int lPtr, int rPtr){
+    public void sortWithHoare(int lPtr, int rPtr){
         if (lPtr>=rPtr)
             return;
 
-        int pivotIdx = partitionLikeHoar(lPtr, rPtr);
+        int pivotIdx = partitionLikeHoare(lPtr, rPtr);
 
-        sortWithHoar(lPtr, pivotIdx-1);
-        sortWithHoar(pivotIdx+1, rPtr);
+        sortWithHoare(lPtr, pivotIdx-1);
+        sortWithHoare(pivotIdx+1, rPtr);
     }
 
     public int partitionLikeLomuto(int lPtr, int rPtr) {
@@ -42,7 +42,7 @@ public class QuickSortBlueprints {
         return idx;
     }
 
-    public int partitionLikeHoar(int idx1, int idx2) {
+    public int partitionLikeHoare(int idx1, int idx2) {
         int pivotIdx = (idx1+idx2)/2;
         int pivot = __arr[(idx1+idx2)/2];
         swap(idx1, pivotIdx);

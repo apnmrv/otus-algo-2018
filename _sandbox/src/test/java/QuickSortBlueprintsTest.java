@@ -33,17 +33,17 @@ class QuickSortBlueprintsTest {
     }
 
     @Test
-    void testHoarPartitionsArrayOfEqualNumbers(){
+    void testHoarePartitionsArrayOfEqualNumbers(){
         QuickSortBlueprints quickSortBlueprints = new QuickSortBlueprints(__equalsArray);
-        int pivotIdx = quickSortBlueprints.partitionLikeHoar(0, __equalsArray.length-1);
+        int pivotIdx = quickSortBlueprints.partitionLikeHoare(0, __equalsArray.length-1);
 
         assertTrue(isPreparedProperly(pivotIdx, __equalsArray));
     }
 
     @Test
-    void testHoarPartitionsRandomArray(){
+    void testHoarePartitionsRandomArray(){
         QuickSortBlueprints quickSortBlueprints = new QuickSortBlueprints(__randomArray);
-        int pivotIdx = quickSortBlueprints.partitionLikeHoar(0, __randomArray.length-1);
+        int pivotIdx = quickSortBlueprints.partitionLikeHoare(0, __randomArray.length-1);
 
         assertTrue(isPreparedProperly(pivotIdx, __randomArray));
     }
@@ -79,13 +79,13 @@ class QuickSortBlueprintsTest {
     }
 
     @Test
-    void testQuickSortRandomWithHoar(){
+    void testQuickSortRandomWithHoare(){
 
         for(int i = 0; i < 100; i++) {
 
             int [] arr = (new Randomizer()).getRandomSequence(0, 100, 100);
             QuickSortBlueprints quickSortBlueprints = new QuickSortBlueprints(arr);
-            quickSortBlueprints.sortWithHoar(0, arr.length-1);
+            quickSortBlueprints.sortWithHoare(0, arr.length-1);
             assertTrue(isSortedProperly(arr));
         }
     }
@@ -99,9 +99,9 @@ class QuickSortBlueprintsTest {
     }
 
     @Test
-    void testQuickSortEqualsWithHoar(){
+    void testQuickSortEqualsWithHoare(){
         QuickSortBlueprints quickSortBlueprints = new QuickSortBlueprints(__equalsArray);
-        quickSortBlueprints.sortWithHoar(0, __equalsArray.length-1);
+        quickSortBlueprints.sortWithHoare(0, __equalsArray.length-1);
         assertTrue(isSortedProperly(__equalsArray));
     }
 

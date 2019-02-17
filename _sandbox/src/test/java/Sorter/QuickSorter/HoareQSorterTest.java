@@ -2,20 +2,18 @@ package Sorter.QuickSorter;
 
 import Sorter.SorterTest;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-class LomuttoQSorterTest extends SorterTest {
+class HoareQSorterTest extends SorterTest {
 
     @BeforeEach
     public void setUp() {
         super.setUp();
-        _sorter = new LomutoQSorter();
+        _sorter = new HoareQSorter();
     }
 
     @Test
-    void testRandomSequences(){
+    public void testRandomSequencesSorting(){
         super.testRandomSequencesSorting();
     }
 

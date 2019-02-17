@@ -2,17 +2,17 @@ package Sorter.QuickSorter;
 
 public class LomutoQSorter extends QSorter {
 
-    LomutoQSorter(LomutoSplitter splitter) {
-        super(splitter);
+    LomutoQSorter() {
+        super(new LomutoSplitter());
     }
 
-    protected void doSort(int idx1, int idx2){
-        if (idx1 >= idx2)
+    protected void doSort(int idxFrom, int idxTo){
+        if (idxFrom >= idxTo)
             return;
 
-        int pivotIdx = _splitter.split(_array, idx1, idx2);
+        int pivotIdx = _splitter.split(_array, idxFrom, idxTo, idxTo);
 
-        doSort(idx1, pivotIdx-1);
-        doSort(pivotIdx+1, idx2);
+        doSort(idxFrom, pivotIdx-1);
+        doSort(pivotIdx+1, idxTo);
     }
 }
