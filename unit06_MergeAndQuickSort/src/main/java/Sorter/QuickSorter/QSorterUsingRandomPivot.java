@@ -2,7 +2,9 @@ package Sorter.QuickSorter;
 
 public class QSorterUsingRandomPivot extends OptimizedQSorter {
 
-    QSorterUsingRandomPivot(int insertionSortCutoff) {
+    private static final String __TITLE = "QuickSort Using Random Pivot";
+
+    public QSorterUsingRandomPivot(int insertionSortCutoff) {
         super(new HoareSplitter(), insertionSortCutoff);
     }
 
@@ -19,6 +21,11 @@ public class QSorterUsingRandomPivot extends OptimizedQSorter {
 
         doSort(idxFrom, pivotIdxOut-1);
         doSort(pivotIdxOut+1, idxTo);
+    }
+
+    @Override
+    public String title() {
+        return __TITLE;
     }
 
     private int calcPivotIdx(int min, int max) {

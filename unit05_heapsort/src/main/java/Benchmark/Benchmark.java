@@ -31,7 +31,7 @@ public class Benchmark implements IBenchmark {
     public IPrintableReport estimateMultipleRuns(ISorter sorter, int sequenceSize, int times) {
         _sorter = sorter;
         _sortingAlgo = sorter.title();
-        int[] sequenceIn = null;
+
         MultipleRunsData mData = new MultipleRunsData();
         for(int i = 0; i < times; i++){
             _sequenceIn = _randomizer.getIntegers(1, sequenceSize, sequenceSize);

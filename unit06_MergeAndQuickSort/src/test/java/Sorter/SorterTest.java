@@ -10,7 +10,7 @@ public class SorterTest {
     private static int SIZE = 1000;
     private static int MIN = 10;
     private static int MAX = 1000;
-    private static int ROTATE_RANDOM = 100;
+    private static int ROTATE_RANDOM = 50;
 
     private int[] __randomArray;
     private int[] __equalsArray;

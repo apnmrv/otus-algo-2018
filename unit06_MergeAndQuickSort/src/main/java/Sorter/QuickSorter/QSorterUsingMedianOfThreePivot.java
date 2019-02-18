@@ -4,6 +4,8 @@ import Sorter.ArrayHelper;
 
 public class QSorterUsingMedianOfThreePivot extends OptimizedQSorter {
 
+    private static final String __TITLE = "QuickSort Using 'Median of three' Pivot And Insertion Sort on Small Subarrays";
+
     public QSorterUsingMedianOfThreePivot(int insertionSortCutoff) {
         super(new HoareSplitter(), insertionSortCutoff);
     }
@@ -11,18 +13,19 @@ public class QSorterUsingMedianOfThreePivot extends OptimizedQSorter {
     @Override
     protected void doSort(int idxFrom, int idxTo) {
 
-        if(idxFrom >= idxTo)
+        if (idxTo - idxFrom < _cutoff) {
+            doInsertionSort(idxFrom, idxTo);
             return;
+        }
 
-        applyMedianOfThree(idxFrom, idxTo);
-        int pivotIdx = _splitter.split(_array, idxFrom, idxTo, idxTo);
+        applyMedianOfThreeStrategy(idxFrom, idxTo);
+        int pivotIdxOut = _splitter.split(_array, idxFrom, idxTo, idxTo);
 
-
-        doSort(idxFrom, pivotIdx-1);
-        doSort(pivotIdx+1, idxTo);
+        doSort(idxFrom, pivotIdxOut-1);
+        doSort(pivotIdxOut+1, idxTo);
     }
 
-    private void applyMedianOfThree(int idxFrom, int idxTo) {
+    private void applyMedianOfThreeStrategy(int idxFrom, int idxTo) {
         int middleIdx = (idxFrom + idxTo)/2;
 
         if(_array[middleIdx] < _array[idxFrom])
@@ -33,5 +36,10 @@ public class QSorterUsingMedianOfThreePivot extends OptimizedQSorter {
             ArrayHelper.swap(_array, middleIdx, idxTo);
 
         ArrayHelper.swap(_array, middleIdx, idxTo);
+    }
+
+    @Override
+    public String title() {
+        return __TITLE;
     }
 }
