@@ -8,6 +8,12 @@ public class InsertionSorter implements ISorter {
     public void sort(int[] arr) {
 
         int size = arr.length;
+
+        sort(arr, size);
+    }
+
+    public void sort(int[] arr, int size) {
+
         int i,j,key;
 
         for(i = 1; i < size; i++) {

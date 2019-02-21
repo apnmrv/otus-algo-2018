@@ -1,5 +1,5 @@
 package Sorter;
 
 public interface ISorter {
-    void sort(int[] array);
+    void sort(int[] array) throws Exception;
 }
