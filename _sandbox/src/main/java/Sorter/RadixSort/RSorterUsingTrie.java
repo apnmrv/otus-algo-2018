@@ -2,7 +2,7 @@ package Sorter.RadixSort;
 
 import Sorter.ISorter;
 
-public class RSorter implements ISorter {
+public class RSorterUsingTrie implements ISorter {
 
     private static int $base = 10;
 
@@ -14,7 +14,8 @@ public class RSorter implements ISorter {
     private int __max;
     private int __offset;
 
-    public void sort(int [] array) {
+    @Override
+    public void sort(int[] array) {
         __array = array;
         __size = array.length;
         try {
@@ -72,6 +73,15 @@ public class RSorter implements ISorter {
     }
 
     private void __count() {
+        __count = new int[$base];
+        for (int i = 0; i < __size ; i++)
+            __count[(__array[i]/__basePower) % $base]++;
+
+        for (int j = 1; j < $base; j++)
+            __count[j] += __count[j-1];
+    }
+
+    private void __countNodes() {
         __count = new int[$base];
         for (int i = 0; i < __size ; i++)
             __count[(__array[i]/__basePower) % $base]++;

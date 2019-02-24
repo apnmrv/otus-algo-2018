@@ -1,4 +1,4 @@
-package Randomizer;
+package Sorter;
 
 import java.util.HashMap;
 import java.util.Map;

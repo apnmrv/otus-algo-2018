@@ -12,8 +12,8 @@ class RSorterBitwiseTest extends SorterTest {
     }
 
     @Test
-    public void testRandomSequencesSorting(){
-        super.testRandomSequencesSorting();
+    public void canSortPositiveIntegers(){
+        super.canSortPositiveIntegers();
     }
 
     @Test
@@ -22,7 +22,7 @@ class RSorterBitwiseTest extends SorterTest {
     }
 
     @Test
-    public void testSequencesWithNegativesSorting(){
-        super.testSequencesWithNegativesSorting();
+    public void canSortNegativeIntegers(){
+        super.canSortNegativeIntegers();
     }
 }

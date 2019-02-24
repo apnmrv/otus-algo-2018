@@ -1,8 +1,8 @@
-package Randomizer;
+package Sorter;
 
-public interface IRandomizer {
+interface IRandomizer {
 
     public int[] getRandomSequence(int min, int max, int size);
-    
+
     public int[] getUniques(int min, int max);
 }

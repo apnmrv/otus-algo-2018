@@ -1,6 +1,5 @@
 package Sorter.BucketSorter;
 
-import Sorter.BucketSorter.BSorter;
 import Sorter.SorterTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,8 +12,8 @@ class BSorterTest extends SorterTest {
     }
 
     @Test
-    public void testRandomSequencesSorting(){
-        super.testRandomSequencesSorting();
+    public void canSortPositiveIntegers(){
+        super.canSortPositiveIntegers();
     }
 
     @Test

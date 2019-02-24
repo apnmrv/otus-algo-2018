@@ -1,7 +1,5 @@
 package Sorter;
 
-import Randomizer.Randomizer;
-import Sorter.ISorter;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -25,7 +23,7 @@ public class SorterTest {
         __equalsArray = new int[] {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
     }
 
-    public void testRandomSequencesSorting(){
+    public void canSortPositiveIntegers(){
         for(int i = 0; i < ROTATE_RANDOM; i++) {
             int [] arr = __randomizer.getRandomSequence(MIN,MAX,SIZE);
 
@@ -34,7 +32,7 @@ public class SorterTest {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            assertTrue(isSortedProperly(arr));
+            assertTrue(isSorted(arr));
         }
     }
 
@@ -44,10 +42,10 @@ public class SorterTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        assertTrue(isSortedProperly(__equalsArray));
+        assertTrue(isSorted(__equalsArray));
     }
 
-    private boolean isSortedProperly(int[] array) {
+    private boolean isSorted(int[] array) {
         boolean result = true;
         for(int i = 0; i < array.length-1; i++){
             if(array[i]>array[i+1]){
@@ -58,7 +56,7 @@ public class SorterTest {
         return result;
     }
 
-    protected void testSequencesWithNegativesSorting() {
+    protected void canSortNegativeIntegers() {
         for(int i = 0; i < ROTATE_RANDOM; i++) {
             int [] arr = __randomizer.getRandomSequence(NEGATIVE_MIN,MAX,SIZE);
             try {
@@ -66,7 +64,7 @@ public class SorterTest {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            assertTrue(isSortedProperly(arr));
+            assertTrue(isSorted(arr));
         }
     }
 }
