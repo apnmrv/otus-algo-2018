@@ -1,6 +1,7 @@
 package Sorter;
 
 import Randomizer.Randomizer;
+import Sorter.ISorter;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

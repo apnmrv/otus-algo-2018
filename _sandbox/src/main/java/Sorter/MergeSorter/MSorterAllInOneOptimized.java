@@ -23,7 +23,7 @@ public class MSorterAllInOneOptimized extends MSorter {
     }
 
     private void mergeSort(int[] arrOut, int[] arrIn, int firstIdx, int lastIdx) {
-        if(lastIdx <= firstIdx + __insertionSortCutoff){
+        if(lastIdx < firstIdx + __insertionSortCutoff){
             insertionSort(arrOut, firstIdx, lastIdx);
             return;
         }
