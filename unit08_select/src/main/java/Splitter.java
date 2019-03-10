@@ -3,9 +3,13 @@ import Randomizer.Randomizer;
 
 public class Splitter {
 
-    private static IRandomizer __randomizer = new Randomizer();
+    private IRandomizer __randomizer;
 
-    public static int split(int [] arr, int idxFrom, int idxTo){
+    Splitter(){
+        __randomizer = new Randomizer();
+    }
+
+    public int split(int [] arr, int idxFrom, int idxTo){
 
         int initialPivotIdx = __randomizer.getRandomValue(idxFrom, idxTo);
 

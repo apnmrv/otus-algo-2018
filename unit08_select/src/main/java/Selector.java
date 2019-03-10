@@ -1,14 +1,9 @@
-import Randomizer.IRandomizer;
-import Randomizer.Randomizer;
-
 public class Selector implements ISelector {
 
-    private final IRandomizer __randomizer;
     private Splitter __splitter;
     private int[] __array;
 
     Selector() {
-        __randomizer = new Randomizer();
         __splitter = new Splitter();
     }
 
