@@ -4,7 +4,7 @@ import Sorter.ArrayHelper;
 
 public class HoareQSorter extends QSorter {
 
-    HoareQSorter() {
+    public HoareQSorter() {
         super(new HoareSplitter());
     }
 

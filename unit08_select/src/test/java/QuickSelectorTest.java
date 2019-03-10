@@ -2,12 +2,12 @@ import Randomizer.IRandomizer;
 import Randomizer.Randomizer;
 import Sorter.QuickSorter.HoareQSorter;
 import Sorter.QuickSorter.ISorter;
-import org.junit.jupiter.api.BeforeEach;
+import Sorter.QuickSorter.Splitter;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SelectorTest {
+class QuickSelectorTest {
 
     private static final int TESTS_NUMBER = 100;
 
@@ -21,7 +21,8 @@ class SelectorTest {
     public void setUp(){
         IRandomizer r = new Randomizer();
         ISorter s = new HoareQSorter();
-        __selector = new Selector();
+
+        __selector = new QuickSelector();
         __randomArray = r.getUniques(MIN, MAX);
         __randomArraySorted = __randomArray.clone();
         s.sort(__randomArraySorted);
@@ -38,7 +39,6 @@ class SelectorTest {
                 int eSelected = __selector.select(__randomArray, i);
                 assertEquals(__randomArraySorted[i-1], eSelected);
             }
-
         }
     }
 }
