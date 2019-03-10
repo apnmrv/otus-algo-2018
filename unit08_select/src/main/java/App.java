@@ -9,6 +9,5 @@ public class App {
         int result = wrapper.select(arr, 6);
 
         System.out.println(result);
-
     }
 }

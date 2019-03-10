@@ -9,6 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SelectorTest {
 
+    private static final int TESTS_NUMBER = 100;
+
     private static final int MIN = 0;
     private static final int MAX = 100;
 
@@ -16,8 +18,6 @@ class SelectorTest {
     private int[] __randomArray;
     private int[] __randomArraySorted;
 
-
-    @BeforeEach
     public void setUp(){
         IRandomizer r = new Randomizer();
         ISorter s = new HoareQSorter();
@@ -30,9 +30,15 @@ class SelectorTest {
     @Test
     public void canSelectNthSmallestElement(){
 
-        for(int i = 1; i <= __randomArray.length; i++) {
-            int eSelected = __selector.select(__randomArray, i);
-            assertEquals(__randomArraySorted[i-1], eSelected);
+        for (int counter = 1; counter <= TESTS_NUMBER; counter++) {
+
+            setUp();
+
+            for(int i = 1; i <= __randomArray.length; i++) {
+                int eSelected = __selector.select(__randomArray, i);
+                assertEquals(__randomArraySorted[i-1], eSelected);
+            }
+
         }
     }
 }
